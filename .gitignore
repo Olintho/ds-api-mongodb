@@ -5,7 +5,7 @@ target/
 !**/src/test/**/target/
 
 ### OSJ Doc ###
-doc
+doc/
 
 ### STS ###
 .apt_generated

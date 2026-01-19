@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.com.olintho.workshopmongodb.dto.UserDTO;
 import br.com.olintho.workshopmongodb.model.User;
 import br.com.olintho.workshopmongodb.repository.UserRepository;
 import br.com.olintho.workshopmongodb.services.exception.ObjectNotFoundException;
@@ -24,4 +25,22 @@ public class UserService {
 		Optional<User> user = userRepository.findById(id);
 		return user.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado"));
 	}
+	
+	public User insert(User user) {
+		return userRepository.insert(user);
+	}
+	
+	// FIXME : OSJ Método sem uso, devido a estrutura ser diferente
+	public User fromDTO(UserDTO userDto) {
+		return new User(userDto.getId(), userDto.getName(), userDto.getEmail(), null, null);
+	}
+	
+	// TODO : OSJ Apresentar mensagem no retorno?
+	public void delete(String id) {
+		findById(id);
+		userRepository.deleteById(id);
+	}
+	
+	
 }
+

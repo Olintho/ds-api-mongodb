@@ -1,20 +1,25 @@
 package br.com.olintho.workshopmongodb.controllers;
 
+import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import br.com.olintho.workshopmongodb.dto.UserDTO;
 import br.com.olintho.workshopmongodb.model.User;
 import br.com.olintho.workshopmongodb.services.UserService;
 
-//HEREIN : OSJ - Capitulo 347
+//HEREIN : OSJ - Capitulo 351
 
 @RestController
 @RequestMapping(value = "/users")
@@ -34,6 +39,18 @@ public class UserController {
 	public ResponseEntity<UserDTO> findById(@PathVariable String id){
 		User user = userService.findById(id);
 		return ResponseEntity.ok().body(new UserDTO(user));
-		
+	}
+	
+	@PostMapping
+	public ResponseEntity<Void> insert(@RequestBody User user) {
+		User obj = userService.insert(user);
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
+		return ResponseEntity.created(uri).build();
+	}
+	
+	@DeleteMapping(value = "/{id}")
+	public ResponseEntity<Void> delete(@PathVariable String id) {
+		userService.delete(id);
+		return ResponseEntity.noContent().build();
 	}
 }

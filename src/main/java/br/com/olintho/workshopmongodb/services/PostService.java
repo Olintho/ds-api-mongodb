@@ -1,5 +1,6 @@
 package br.com.olintho.workshopmongodb.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,5 +21,8 @@ public class PostService {
 		return post.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado"));
 	}
 	
+	public List<Post> findByTitle(String text){
+		return postRepository.findByTitleContainingIgnoreCase(text);
+	}
 	
 }

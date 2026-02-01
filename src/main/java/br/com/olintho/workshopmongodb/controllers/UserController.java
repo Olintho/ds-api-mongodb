@@ -21,7 +21,7 @@ import br.com.olintho.workshopmongodb.model.Post;
 import br.com.olintho.workshopmongodb.model.User;
 import br.com.olintho.workshopmongodb.services.UserService;
 
-//HEREIN : OSJ - Capitulo 358
+//HEREIN : OSJ - Capitulo 359
 
 @RestController
 @RequestMapping(value = "/users")

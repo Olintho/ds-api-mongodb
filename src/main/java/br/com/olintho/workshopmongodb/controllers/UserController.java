@@ -20,7 +20,7 @@ import br.com.olintho.workshopmongodb.dto.UserDTO;
 import br.com.olintho.workshopmongodb.model.User;
 import br.com.olintho.workshopmongodb.services.UserService;
 
-//HEREIN : OSJ - Capitulo 356
+//HEREIN : OSJ - Capitulo 357
 
 @RestController
 @RequestMapping(value = "/users")

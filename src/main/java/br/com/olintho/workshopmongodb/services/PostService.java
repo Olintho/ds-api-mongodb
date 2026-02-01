@@ -21,8 +21,14 @@ public class PostService {
 		return post.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado"));
 	}
 	
+	// Exemplo usando Query Methods com nomes de campo
 	public List<Post> findByTitle(String text){
 		return postRepository.findByTitleContainingIgnoreCase(text);
+	}
+
+	// Exemplo usando @Query 
+	public List<Post> findBySearchTitle(String text){
+		return postRepository.searchTitle(text);
 	}
 	
 }

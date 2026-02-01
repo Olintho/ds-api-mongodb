@@ -31,7 +31,7 @@ public class PostController {
 	public ResponseEntity<List<Post>> findByTitle(@RequestParam(value = "text", defaultValue = "") String text) {
 
 		text = URL.decodeParam(text);
-		List<Post> posts = postService.findByTitle(text);
+		List<Post> posts = postService.findBySearchTitle(text);
 		return ResponseEntity.ok().body(posts);
 	}
 

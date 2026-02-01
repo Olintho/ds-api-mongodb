@@ -17,10 +17,11 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import br.com.olintho.workshopmongodb.dto.UserDTO;
+import br.com.olintho.workshopmongodb.model.Post;
 import br.com.olintho.workshopmongodb.model.User;
 import br.com.olintho.workshopmongodb.services.UserService;
 
-//HEREIN : OSJ - Capitulo 357
+//HEREIN : OSJ - Capitulo 358
 
 @RestController
 @RequestMapping(value = "/users")
@@ -65,6 +66,11 @@ public class UserController {
 		
 	}
 
+	@GetMapping(value = "/{id}/posts")
+	public ResponseEntity<List<Post>> findPosts(@PathVariable String id) {
+		User user = userService.findById(id);
+		return ResponseEntity.ok().body(user.getPosts());
+	}
 
 
 

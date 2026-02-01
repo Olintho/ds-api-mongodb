@@ -20,7 +20,7 @@ import br.com.olintho.workshopmongodb.dto.UserDTO;
 import br.com.olintho.workshopmongodb.model.User;
 import br.com.olintho.workshopmongodb.services.UserService;
 
-//HEREIN : OSJ - Capitulo 351
+//HEREIN : OSJ - Capitulo 356
 
 @RestController
 @RequestMapping(value = "/users")
@@ -58,7 +58,6 @@ public class UserController {
 	@PutMapping(value = "/{id}")
 	public ResponseEntity<Void> update(@RequestBody UserDTO userDto, @PathVariable String id) {
 		
-		//FIXME : OSJ Bug -> Vai matar alguns valores nos campos
 		User user = userService.fromDTO(userDto);
 		user.setId(id);
 		user = userService.update(user);

@@ -30,9 +30,8 @@ public class UserService {
 		return userRepository.insert(user);
 	}
 	
-	// FIXME : OSJ Método sem uso, devido a estrutura ser diferente
 	public User fromDTO(UserDTO userDto) {
-		return new User(userDto.getId(), userDto.getName(), userDto.getEmail(), null, null);
+		return new User(userDto.getId(), userDto.getName(), userDto.getEmail());
 	}
 	
 	// TODO : OSJ Apresentar mensagem no retorno?
@@ -50,8 +49,6 @@ public class UserService {
 	private void updateData(User newUser, User user) {
 		newUser.setName(user.getName());
 		newUser.setEmail(user.getEmail());
-		newUser.setPhone(user.getPhone());
-		newUser.setAddress(user.getAddress());
 	}
 	
 	

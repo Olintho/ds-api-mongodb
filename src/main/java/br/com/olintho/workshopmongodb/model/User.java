@@ -15,19 +15,16 @@ public class User implements Serializable {
 	private String id;
 	private String name;
 	private String email;
-	private String phone;
-	private String address;
+	
 
 	public User() {
 	}
 
-	public User(String id, String name, String email, String phone, String address) {
+	public User(String id, String name, String email) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.email = email;
-		this.phone = phone;
-		this.address = address;
 	}
 
 	public String getId() {
@@ -52,22 +49,6 @@ public class User implements Serializable {
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	public String getPhone() {
-		return phone;
-	}
-
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
-
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
 	}
 
 	@Override
